@@ -1,0 +1,36 @@
+How to use them in OpenHands Cloud
+Go to https://app.all-hands.dev and sign in.
+Start a new conversation.
+When choosing a repository, select open-code-cloud-platform-settings.
+In your first message, include a trigger phrase for the skill you want.
+That's it. The skill loads automatically and shapes the agent's behavior for that conversation.
+
+Example prompts to paste
+Planning:
+
+Plan this out before you code: I want to add a nightly job that runs our
+test suite and posts a coverage summary.
+Security review:
+
+Review the latest commit for security issues. Focus on secrets and
+injection.
+Coverage:
+
+Run coverage and tell me the lowest-covered modules and what to test next.
+Incident triage:
+
+Triage this incident. Here's the error log:
+<paste log or stack trace>
+Verify it works
+Start a conversation on that repo and send just plan this out. If the skill loaded, the agent will respond with a structured plan (Goal, Constraints, Approaches, Steps) instead of jumping to code. That confirms the setup end to end.
+
+Optional add-ons (skip unless you need them)
+Secrets — Settings > Secrets. None of the four skills require a token. Add one only if a skill should call an API.
+MCP servers — Customize > MCP Servers. Add Datadog if you want incident-triage to pull live errors.
+Manage skills in the UI — Customize > Skills shows what's loaded and lets you add more.
+Automate a skill — ask the agent to "create an automation" to run a skill on a schedule, e.g. a weekly coverage report.
+Using them outside Cloud
+The same skills work locally. Clone the repo and run OpenHands from that directory — .agents/skills/ is picked up automatically. You can also copy the .agents/skills/ folder into any other project to reuse them there.
+
+One caveat
+The skills are on main now, so a conversation started on that repo picks them up. If you start a conversation on a different repo, these skills won't be present unless you copy .agents/skills/ into it or add them via Customize > Skills in the Cloud UI.
